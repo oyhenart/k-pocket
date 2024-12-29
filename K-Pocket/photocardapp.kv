@@ -1,0 +1,45 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: "Bienvenido a K-Pocket"
+            font_size: 24
+
+        Button:
+            text: "Abrir paquete"
+            font_size: 20
+            on_press: app.root.current = 'open_pack'
+
+<OpenPackScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: root.pack_message
+            font_size: 24
+
+        ClickableImage:
+            source: "assets/images/paquete_cerrado.png"
+            size_hint: None, None
+            size: 200, 200
+            allow_stretch: True
+            keep_ratio: True
+            on_press: root.open_pack()  # Llama al método para abrir el paquete
+
+        GridLayout:
+            id: pack_grid
+            cols: 5
+            spacing: 10
+            size_hint_y: None
+            height: self.minimum_height
+
+        Button:
+            text: "Volver al inicio"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = 'login'
